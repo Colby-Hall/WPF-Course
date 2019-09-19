@@ -1,0 +1,23 @@
+﻿<Window x:Class="DesktopContactsApp.ContactDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopContactsApp"
+        mc:Ignorable="d"
+        Title="ContactDetailsWindow" Height="300" Width="300">
+
+    <StackPanel Margin="5">
+        <TextBox x:Name="nameTextBox" Margin="5"/>
+        <TextBox x:Name="emailTextBox" Margin="5"/>
+        <TextBox x:Name="phoneTextBox" Margin="5"/>
+        <Button Content="Update" Margin="5"
+                x:Name="updateButton"
+                Click="UpdateButton_Click"
+                />
+        <Button Content="Delete" Margin="5"
+                x:Name="deleteButton"
+                Click="DeleteButton_Click"
+                Foreground="Red"/>
+    </StackPanel>
+</Window>
