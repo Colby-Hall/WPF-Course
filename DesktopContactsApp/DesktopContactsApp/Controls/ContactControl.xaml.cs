@@ -23,7 +23,7 @@ namespace DesktopContactsApp.Controls
     {
         private Contact contact;
 
-        public Contact MyProperty
+        public Contact Contact
         {
             get { return contact; }
             set
