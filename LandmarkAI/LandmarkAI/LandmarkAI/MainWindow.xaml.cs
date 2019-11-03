@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace LandmarkAI
         public MainWindow()
         {
             InitializeComponent();
+        }
+        // selecting an image file
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Filter happens in the file explorer through the text after the vertical bar 
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image files (*.png; *(jpg)|*.png;*.jpg;*jpeg|All files (*.*)|*.*";
+            // Setting the initial directory
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+
+            if (dialog.ShowDialog() == true)
+            {
+                string fileName = dialog.FileName;
+                selectedImage.Source = new BitmapImage(new Uri(fileName));
+            }
+
+            
         }
     }
 }
