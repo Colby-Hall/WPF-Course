@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,7 +48,7 @@ namespace LandmarkAI
             
         }
 
-        private void MakePredictionAsync(string fileName)
+        private async void MakePredictionAsync(string fileName)
         {
             string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/54a2b3b0-9de8-4aec-a6cc-cffad8b3c589/classify/iterations/Iteration1/image";
             string predictionKey = "9b2f63af4ead44c7917914ab375bbb03";
@@ -55,6 +56,22 @@ namespace LandmarkAI
             
             // reads the file at the path into an array of bytes
             var file = File.ReadAllBytes(fileName);
+
+            // using statement so client closes as soon as execution leaves this code block
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Prediction-Key", predictionKey);
+
+                using (var content = new ByteArrayContent(file))
+                {
+                    // tell what type of content is in the request
+                    content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(url, content);
+
+                    // PostAsync sends and requests info 
+                }
+
+            }
         }
 
     }
