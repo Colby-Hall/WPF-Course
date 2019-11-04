@@ -64,11 +64,13 @@ namespace LandmarkAI
 
                 using (var content = new ByteArrayContent(file))
                 {
-                    // tell what type of content is in the request
+                    // Tell what type of content is in the request
                     content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(url, content);
 
-                    // PostAsync sends and requests info 
+                    // PostAsync sends a post request and requests info 
+
+                    var responseString = await response.Content.ReadAsStringAsync();
                 }
 
             }
