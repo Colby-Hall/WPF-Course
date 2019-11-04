@@ -39,9 +39,19 @@ namespace LandmarkAI
             {
                 string fileName = dialog.FileName;
                 selectedImage.Source = new BitmapImage(new Uri(fileName));
+
+                MakePredictionAsync(fileName);
             }
 
             
         }
+
+        private void MakePredictionAsync(string fileName)
+        {
+            string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/54a2b3b0-9de8-4aec-a6cc-cffad8b3c589/classify/iterations/Iteration1/image";
+            string predictionKey = "9b2f63af4ead44c7917914ab375bbb03";
+            string contentType = "application/octet-stream";
+        }
+
     }
 }
