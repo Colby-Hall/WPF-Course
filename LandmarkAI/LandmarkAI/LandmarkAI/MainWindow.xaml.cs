@@ -69,6 +69,10 @@ namespace LandmarkAI
                     var response = await client.PostAsync(url, content);
 
                     // PostAsync sends a post request and requests info 
+                    
+                    // JSON string
+                    // jsonutils.com, gives a nice little summary of the classes etc. needed for managing
+                    // the JSON info, very useful for much more complex JSON replies
 
                     var responseString = await response.Content.ReadAsStringAsync();
                 }
