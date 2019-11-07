@@ -72,7 +72,7 @@ namespace LandmarkAI
                     
                     // JSON string
                     // jsonutils.com, gives a nice little summary of the classes etc. needed for managing
-                    // the JSON info, very useful for much more complex JSON replies
+                    // JSON info, very useful for much more complex JSON replies
 
                     var responseString = await response.Content.ReadAsStringAsync();
                 }
