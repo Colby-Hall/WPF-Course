@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using LandmarkAI.Classes;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,6 +77,11 @@ namespace LandmarkAI
                     // JSON info, very useful for much more complex JSON replies
 
                     var responseString = await response.Content.ReadAsStringAsync();
+
+                    // generic Deserialize, deserialize JSON response to a CustomVision object,
+                    // access its list of predictions
+
+                    List<Prediction> predictions = (JsonConvert.DeserializeObject<CustomVision>(responseString)).Predictions;
                 }
 
             }
